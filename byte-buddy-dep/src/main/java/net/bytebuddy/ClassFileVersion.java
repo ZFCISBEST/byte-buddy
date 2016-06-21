@@ -67,7 +67,7 @@ public class ClassFileVersion implements Comparable<ClassFileVersion> {
     /**
      * The class file version of Java 9.
      */
-    public static final ClassFileVersion JAVA_V9 = new ClassFileVersion(53);
+    public static final ClassFileVersion JAVA_V9 = new ClassFileVersion(Opcodes.V1_9);
 
     /**
      * A version locator for the executing JVM.
@@ -412,7 +412,7 @@ public class ClassFileVersion implements Comparable<ClassFileVersion> {
          * Creates a new extractor.
          */
         protected VersionExtractor() {
-            super(Opcodes.ASM5);
+            super(Opcodes.ASM6);
         }
 
         @Override

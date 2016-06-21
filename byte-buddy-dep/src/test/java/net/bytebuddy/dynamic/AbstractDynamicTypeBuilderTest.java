@@ -354,7 +354,7 @@ public abstract class AbstractDynamicTypeBuilderTest {
         when(asmVisitorWrapper.wrap(any(TypeDescription.class), any(ClassVisitor.class), anyInt(), anyInt())).then(new Answer<ClassVisitor>() {
             @Override
             public ClassVisitor answer(InvocationOnMock invocationOnMock) throws Throwable {
-                return new ClassVisitor(Opcodes.ASM5, (ClassVisitor) invocationOnMock.getArguments()[1]) {
+                return new ClassVisitor(Opcodes.ASM6, (ClassVisitor) invocationOnMock.getArguments()[1]) {
                     @Override
                     public void visitEnd() {
                         MethodVisitor mv = visitMethod(Opcodes.ACC_PUBLIC, FOO, "()Ljava/lang/String;", null, null);

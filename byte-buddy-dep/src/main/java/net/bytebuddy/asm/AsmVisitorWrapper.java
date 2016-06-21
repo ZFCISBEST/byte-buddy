@@ -264,7 +264,7 @@ public interface AsmVisitorWrapper {
              * @param instrumentedType The instrumented type.
              */
             protected DispatchingVisitor(ClassVisitor classVisitor, TypeDescription instrumentedType) {
-                super(Opcodes.ASM5, classVisitor);
+                super(Opcodes.ASM6, classVisitor);
                 this.instrumentedType = instrumentedType;
                 fieldsByName = new HashMap<String, FieldDescription.InDefinedShape>();
                 for (FieldDescription.InDefinedShape fieldDescription : instrumentedType.getDeclaredFields()) {
@@ -568,7 +568,7 @@ public interface AsmVisitorWrapper {
              * @param readerFlags      The ASM {@link org.objectweb.asm.ClassReader} flags to consider.
              */
             protected DispatchingVisitor(ClassVisitor classVisitor, TypeDescription instrumentedType, int writerFlags, int readerFlags) {
-                super(Opcodes.ASM5, classVisitor);
+                super(Opcodes.ASM6, classVisitor);
                 this.instrumentedType = instrumentedType;
                 this.writerFlags = writerFlags;
                 this.readerFlags = readerFlags;
