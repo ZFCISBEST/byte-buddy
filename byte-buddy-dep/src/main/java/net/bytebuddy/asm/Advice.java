@@ -5187,9 +5187,9 @@ public class Advice implements AsmVisitorWrapper.ForDeclaredMethods.MethodVisito
                 protected final MethodDescription.InDefinedShape adviceMethod;
 
                 /**
-                 * The binary representation of the advice method.
+                 * The class reader for reading the advice method's byte code.
                  */
-                private final byte[] binaryRepresentation;
+                private final ClassReader classReader;
 
                 /**
                  * An unresolved mapping of offsets of the advice method based on the annotations discovered on each method parameter.
@@ -5231,7 +5231,7 @@ public class Advice implements AsmVisitorWrapper.ForDeclaredMethods.MethodVisito
                                 ? new OffsetMapping.ForParameter(parameterDescription.getIndex(), READ_ONLY, parameterDescription.getType().asErasure())
                                 : offsetMapping);
                     }
-                    this.binaryRepresentation = binaryRepresentation;
+                    classReader = new ClassReader(binaryRepresentation);
                     suppressionHandler = SuppressionHandler.Suppressing.of(throwableType);
                 }
 
@@ -5250,7 +5250,7 @@ public class Advice implements AsmVisitorWrapper.ForDeclaredMethods.MethodVisito
                             methodSizeHandler,
                             stackMapFrameHandler,
                             suppressionHandler.bind(),
-                            new ClassReader(binaryRepresentation));
+                            classReader);
                 }
 
                 /**
